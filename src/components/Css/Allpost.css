@@ -1,9 +1,9 @@
 .no-post{
-    color: red;
+    height: 10rem;
+    display: flex;
     font-weight: bold;
     justify-content: center;
     align-items: center;
-    
 }
 .all{
     border-radius: 5px;

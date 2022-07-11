@@ -18,5 +18,18 @@
     color: white;
 }
 .message{
+    margin: 0;
     overflow-wrap: break-word;
 }
+
+.post-con {
+    position: relative;
+}
+.btn-del{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -.5rem;
+    top: -.5rem;
+    
+} 
