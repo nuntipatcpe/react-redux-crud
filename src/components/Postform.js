@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Allpost from "./AllPost";
-import "./Postform.css";
+import "./Css/Postform.css";
 
 // redux
 import { postAction } from "../redux/actions/PostAction";

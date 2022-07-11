@@ -4,7 +4,7 @@ import Editing from "./Editing";
 // redux
 import { useSelector } from "react-redux";
 
-import './Allpost.css'
+import './Css/Allpost.css'
 
 function Allpost() {
   const postList = useSelector((state) => state.postList);

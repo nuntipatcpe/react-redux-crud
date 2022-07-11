@@ -1,5 +1,5 @@
 import React from "react";
-import "./post.css";
+import "./Css/post.css";
 
 // redux
 import { deletcAction, editAction } from "../redux/actions/PostAction";

@@ -3,7 +3,7 @@ import {
   DELETE_POST,
   UPDATE_POST,
   EDIT_POST,
-  CANCEL_UP
+  CANNCLE
 } from "../actions/PostAction";
 
 const initialState = {
@@ -34,7 +34,6 @@ const postReducer = ( state = initialState, action) => {
         ...state,
         postList: state.postList.filter((post) => post.id !== action.payload),
       };
-
     case EDIT_POST:
       let editState = state.postList.map((item) =>
         item.id === action.payload ? { ...item, editing: !item.editing } : item
@@ -43,6 +42,14 @@ const postReducer = ( state = initialState, action) => {
         ...state,
         postList: editState,
       };
+    case CANNCLE: 
+    let cancle = state.postList.map((item)=>({ ...item, editing: false }));
+    return {
+      ...state,
+      postList:cancle
+    }
+
+
     case UPDATE_POST:
       const updating = state.postList.map((item) => {
         if(item.id === action.payload.id){
@@ -63,8 +70,6 @@ const postReducer = ( state = initialState, action) => {
       )
 
       let newArray = [...filter,...filter2]
-
-      console.log(filter);
       return {  
         ...state,
         postList: newArray
