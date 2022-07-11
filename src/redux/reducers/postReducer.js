@@ -3,7 +3,7 @@ import {
   DELETE_POST,
   UPDATE_POST,
   EDIT_POST,
-  CANNCLE
+  CANCEL
 } from "../actions/PostAction";
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
 
 const postReducer = ( state = initialState, action) => {
   switch (action.type) {
+    // ADD POST _________________________________________________________________
     case ADD_POST:
       let updateState;
       const foundItem = state.postList.find((item) => item.id === action.payload.id);
@@ -24,16 +25,17 @@ const postReducer = ( state = initialState, action) => {
             item.id === foundItem.id ? item.quantity + 1 : item.quantity,
         }));
       }
-
       return {
         ...state,
         postList: updateState,
       };
+    // DELETE_POST _________________________________________________________________
     case DELETE_POST:
       return {
         ...state,
         postList: state.postList.filter((post) => post.id !== action.payload),
       };
+    // EDIT_POST _________________________________________________________________
     case EDIT_POST:
       let editState = state.postList.map((item) =>
         item.id === action.payload ? { ...item, editing: !item.editing } : item
@@ -42,14 +44,14 @@ const postReducer = ( state = initialState, action) => {
         ...state,
         postList: editState,
       };
-    case CANNCLE: 
+    // Cancel _________________________________________________________________
+    case CANCEL: 
     let cancle = state.postList.map((item)=>({ ...item, editing: false }));
     return {
       ...state,
       postList:cancle
     }
-
-
+    // UPDATE_POST _________________________________________________________________
     case UPDATE_POST:
       const updating = state.postList.map((item) => {
         if(item.id === action.payload.id){
@@ -61,19 +63,18 @@ const postReducer = ( state = initialState, action) => {
           }
         }else return item;
       });
-
       const filter = updating.filter((item)=>
         item.id===action.payload.id
       )
       const filter2 = updating.filter((item)=>
         item.id!==action.payload.id
       )
-
       let newArray = [...filter,...filter2]
       return {  
         ...state,
         postList: newArray
       };
+   // default _________________________________________________________________   
     default:
       return state;
   }

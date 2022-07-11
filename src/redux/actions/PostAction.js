@@ -3,7 +3,7 @@ export const ADD_POST = 'ADD_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const EDIT_POST = 'EDIT_POST'
-export const CANNCLE = 'CANNCLE'
+export const CANCEL = 'CANCEL'
 
 
 export function postAction(addPost) {
@@ -32,6 +32,6 @@ export function editAction(item) {
 }
 export function cancleAction() {
   return {
-    type: CANNCLE
+    type: CANCEL
   }
 }
