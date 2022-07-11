@@ -1,24 +1,27 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+
 import { useState } from "react";
-import { updateAction } from "../actions/PostAction";
+
+//redux
+import { updateAction } from "../redux/actions/PostAction";
+import { useDispatch } from "react-redux";
 
 function Editing(props) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(props.post.title);
   const [message, setMessage] = useState(props.post.message);
-  const [edit, setEdit] = useState(true);
+
 
   const handleEdit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const data = {
       title,
       message,
     };
+
     dispatch(updateAction({ ...props.post, ...data }));
     setTitle("");
     setMessage("");
-    setEdit(!edit);
   };
 
   return (
@@ -43,7 +46,8 @@ function Editing(props) {
           ></textarea>
           <br />
           <br />
-          <button>UPDATE</button>
+          <button className="btn-light">UPDATE</button>
+          <button className="btn-light"></button>
         </form>
       }
     </div>

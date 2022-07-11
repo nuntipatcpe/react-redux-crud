@@ -1,0 +1,22 @@
+.btn-edit-delete{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-edit{
+    background-color: #AB7435;
+}
+.btn-edit:hover{
+    background-color: black;
+    color: white;
+}
+.btn-delete{
+    background-color: #615242;
+}
+.btn-delete:hover{
+    background-color: black;
+    color: white;
+}
+.message{
+    overflow-wrap: break-word;
+}

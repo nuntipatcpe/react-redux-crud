@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import{createStore} from 'redux'
-import postReducer from './reducers/postReducer';
+import postReducer from './redux/reducers/postReducer';
 import {Provider} from 'react-redux'
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+        <App />
     </Provider>
     
   </React.StrictMode>

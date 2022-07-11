@@ -3,21 +3,20 @@ import {
   DELETE_POST,
   UPDATE_POST,
   EDIT_POST,
+  CANCEL_UP
 } from "../actions/PostAction";
 
 const initialState = {
   postList: [],
 };
 
-const postReducer = (state = initialState, action) => {
+const postReducer = ( state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       let updateState;
-      const foundItem = state.postList.find(
-        (item) => item.id === action.payload.id
-      );
+      const foundItem = state.postList.find((item) => item.id === action.payload.id);
       if (!foundItem) {
-        updateState = [...state.postList, action.payload];
+        updateState = [ action.payload,...state.postList];
       } else {
         updateState = state.postList.map((item) => ({
           ...item,
@@ -25,6 +24,7 @@ const postReducer = (state = initialState, action) => {
             item.id === foundItem.id ? item.quantity + 1 : item.quantity,
         }));
       }
+
       return {
         ...state,
         postList: updateState,
@@ -44,20 +44,30 @@ const postReducer = (state = initialState, action) => {
         postList: editState,
       };
     case UPDATE_POST:
-      const updating = state.postList.map((item) => item.id === action.payload);
-      let newState;
-      if (updating) {
-        newState = state.postList.map((item) => ({
-          ...item,
-          title: action.payload.title,
-          message: action.payload.message,
-          editing: false,
-        }));
-      }
-      console.log(newState);
-      return {
+      const updating = state.postList.map((item) => {
+        if(item.id === action.payload.id){
+           return {
+            ...item,
+            title: action.payload.title,
+            message: action.payload.message,
+            editing: false,
+          }
+        }else return item;
+      });
+
+      const filter = updating.filter((item)=>
+        item.id===action.payload.id
+      )
+      const filter2 = updating.filter((item)=>
+        item.id!==action.payload.id
+      )
+
+      let newArray = [...filter,...filter2]
+
+      console.log(filter);
+      return {  
         ...state,
-        postList: newState,
+        postList: newArray
       };
     default:
       return state;

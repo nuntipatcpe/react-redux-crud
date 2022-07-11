@@ -1,11 +1,15 @@
-import logo from './logo.svg';
-import Postform from './components/Postform'
+import logo from "./logo.svg";
+import Postform from "./components/Postform";
+import "./App.css";
 
 function App() {
   return (
-      <>
-        <Postform />
-      </>
+    <div className="bg-app">
+      <nav className="navbar">
+        <div>Post</div>
+      </nav>
+      <Postform />
+    </div>
   );
 }
 
